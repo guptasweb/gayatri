@@ -1,0 +1,176 @@
+#opening-screen {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #8B0000 0%, #CD5C5C 50%, #FF8C00 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.scroll-container {
+    position: relative;
+    width: 400px;
+    height: 600px;
+}
+
+.scroll-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.scroll-top-roll {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    height: 40px;
+    background: linear-gradient(180deg, #8B4513 0%, #A0522D 100%);
+    border-radius: 40px 40px 10px 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    z-index: 10;
+}
+
+.scroll-bottom-roll {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    height: 40px;
+    background: linear-gradient(0deg, #8B4513 0%, #A0522D 100%);
+    border-radius: 10px 10px 40px 40px;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4);
+    z-index: 10;
+}
+
+.scroll-paper {
+    position: absolute;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    height: 440px;
+    background: 
+        repeating-linear-gradient(
+            0deg,
+            rgba(139, 69, 19, 0.02) 0px,
+            rgba(139, 69, 19, 0.02) 1px,
+            transparent 1px,
+            transparent 3px
+        ),
+        linear-gradient(135deg, #FFF9E6 0%, #F5DEB3 50%, #FFF9E6 100%);
+    border-left: 4px solid #D4AF37;
+    border-right: 4px solid #D4AF37;
+    box-shadow: 
+        0 8px 30px rgba(0, 0, 0, 0.3),
+        inset 0 0 60px rgba(212, 175, 55, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}
+
+.scroll-paper::before,
+.scroll-paper::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 20px;
+
+}
+
+.scroll-paper::before {
+    top: 0;
+}
+
+.scroll-paper::after {
+    bottom: 0;
+}
+
+.scroll-content {
+    text-align: center;
+}
+
+.scroll-symbol {
+    font-size: 5rem;
+    margin-bottom: 30px;
+}
+
+.scroll-word-sanskrit {
+    font-size: 1.5rem;
+    color: #8B0000;
+    font-weight: 700;
+    margin-bottom: 15px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.scroll-word-english {
+    font-size: 2rem;
+    color: #CD5C5C;
+    font-weight: 600;
+    margin-bottom: 15px;
+    font-family: 'Crimson Text', serif;
+}
+
+.scroll-word-meaning {
+    font-size: 1.2rem;
+    color: #666;
+    font-style: italic;
+}
+
+.scroll-rod-top,
+.scroll-rod-bottom {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 320px;
+    height: 12px;
+    background: linear-gradient(90deg, #8B4513 0%, #A0522D 50%, #8B4513 100%);
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.scroll-rod-top {
+    top: 65px;
+}
+
+.scroll-rod-bottom {
+    bottom: 65px;
+}
+
+.scroll-ribbon {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 50px;
+    background: linear-gradient(180deg, #8B0000 0%, #CD5C5C 100%);
+    z-index: 11;
+}
+
+.scroll-ribbon::before {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 16px;
+    height: 16px;
+    background: #D4AF37;
+    border-radius: 50%;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.unfold-particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
