@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import omAudio from '../assets/om.mp3'
 import './Homepage.css'
 
 const Homepage = ({ onComplete }) => {
@@ -128,7 +129,7 @@ const Homepage = ({ onComplete }) => {
       <audio
         ref={audioRef}
         loop
-        src="/gayatri-mantra.mp3"
+        src={omAudio}
       >
         Your browser does not support the audio element.
       </audio>
