@@ -5,6 +5,7 @@ import './AudioPlayer.css'
 const AudioPlayer = () => {
   const [isMuted, setIsMuted] = useState(true) // Start muted to allow autoplay
   const audioRef = useRef(null)
+  const buttonRef = useRef(null)
 
   useEffect(() => {
     const startAudio = async () => {
@@ -26,7 +27,12 @@ const AudioPlayer = () => {
                 setIsMuted(false)
               } catch (err) {
                 // If unmuting fails, set up user interaction handler
-                const handleUserInteraction = () => {
+                const handleUserInteraction = (e) => {
+                  // Ignore clicks on the volume button itself
+                  if (buttonRef.current && (buttonRef.current === e.target || buttonRef.current.contains(e.target))) {
+                    return
+                  }
+                  
                   if (audioRef.current) {
                     audioRef.current.muted = false
                     setIsMuted(false)
@@ -43,7 +49,12 @@ const AudioPlayer = () => {
         } catch (error) {
           console.log('Audio autoplay failed, will start on user interaction:', error)
           // If autoplay fails completely, wait for user interaction
-          const handleUserInteraction = async () => {
+          const handleUserInteraction = async (e) => {
+            // Ignore clicks on the volume button itself
+            if (buttonRef.current && (buttonRef.current === e.target || buttonRef.current.contains(e.target))) {
+              return
+            }
+            
             try {
               if (audioRef.current) {
                 audioRef.current.muted = false
@@ -69,7 +80,12 @@ const AudioPlayer = () => {
   useEffect(() => {
     // If audio is still muted, try to unmute on any user interaction
     if (isMuted && audioRef.current) {
-      const handleInteraction = () => {
+      const handleInteraction = (e) => {
+        // Ignore clicks on the volume button itself - let the button's own handler manage it
+        if (buttonRef.current && (buttonRef.current === e.target || buttonRef.current.contains(e.target))) {
+          return
+        }
+        
         if (audioRef.current && audioRef.current.muted) {
           audioRef.current.muted = false
           setIsMuted(false)
@@ -102,6 +118,7 @@ const AudioPlayer = () => {
     <div className="audio-player">
       <audio ref={audioRef} src={omAudio} />
       <button 
+        ref={buttonRef}
         className="audio-toggle-button" 
         onClick={toggleMute}
         aria-label={isMuted ? 'Unmute audio' : 'Mute audio'}

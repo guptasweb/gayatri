@@ -104,7 +104,7 @@
     position: relative;
     z-index: 2;
     font-weight: 600;
-    font-family: 'Noto Serif Devanagari', serif;
+    font-family: 'Laila', 'Noto Serif Devanagari', serif;
 }
 
 .mix-button:hover {
@@ -349,21 +349,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: 
-        repeating-linear-gradient(
-            0deg,
-            transparent,
-            transparent 2px,
-            rgba(139, 69, 19, 0.03) 2px,
-            rgba(139, 69, 19, 0.03) 4px
-        ),
-        repeating-linear-gradient(
-            90deg,
-            transparent,
-            transparent 2px,
-            rgba(139, 69, 19, 0.03) 2px,
-            rgba(139, 69, 19, 0.03) 4px
-        );
+    background: transparent;
     pointer-events: none;
     z-index: 0;
     opacity: 1;
@@ -419,7 +405,7 @@
     font-size: clamp(2rem, 5vw, 3.5rem);
     font-weight: 700;
     color: #8B4513;
-    font-family: 'Noto Serif Devanagari', serif;
+    font-family: 'Laila', 'Noto Serif Devanagari', serif;
     text-align: center;
     line-height: 1.2;
 }
@@ -438,14 +424,14 @@
     font-weight: 600;
     margin-top: 15px;
     margin-bottom: 5px;
-    font-family: 'Noto Serif Devanagari', serif;
+    font-family: 'Laila', 'Noto Serif Devanagari', serif;
     text-align: center;
 }
 
 .slip-meaning {
     font-size: clamp(0.9rem, 2vw, 1.2rem);
     color: #8B4513;
-    font-family: 'Noto Serif Devanagari', serif;
+    font-family: 'Laila', 'Noto Serif Devanagari', serif;
     text-align: center;
     opacity: 0.8;
     line-height: 1.6;
@@ -458,14 +444,14 @@
     font-weight: 600;
     margin-top: 15px;
     margin-bottom: 5px;
-    font-family: 'Noto Serif Devanagari', serif;
+    font-family: 'Laila', 'Noto Serif Devanagari', serif;
     text-align: center;
 }
 
 .slip-guidance {
     font-size: clamp(0.85rem, 1.8vw, 1.1rem);
     color: #666;
-    font-family: 'Noto Serif Devanagari', serif;
+    font-family: 'Laila', 'Noto Serif Devanagari', serif;
     text-align: left;
     line-height: 1.8;
     white-space: pre-line;
@@ -483,7 +469,7 @@
     font-size: clamp(1rem, 2.5vw, 1.3rem);
     font-weight: 600;
     cursor: pointer;
-    font-family: 'Noto Serif Devanagari', serif;
+    font-family: 'Laila', 'Noto Serif Devanagari', serif;
     box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
     transition: all 0.3s ease;
     touch-action: manipulation;
@@ -505,7 +491,7 @@
     font-size: 0.9rem;
     color: #8B4513;
     font-weight: 600;
-    font-family: 'Noto Serif Devanagari', serif;
+    font-family: 'Laila', 'Noto Serif Devanagari', serif;
     display: block;
 }
 
@@ -899,7 +885,7 @@
 .scroll-container {
     position: relative;
     width: 400px;
-    height: 100%;
+    height: 100vh;
     max-width: 90vw;
     perspective: 1200px;
     z-index: 10;
@@ -991,9 +977,9 @@
     transform: translateX(-50%) scaleY(0);
     transform-origin: top center;
     width: 300px;
-    height: 440px;
-    max-height: 70vh;
-    background: 
+    height: calc(100vh - 145px);
+    max-height: calc(100vh - 145px);
+    background:
         repeating-linear-gradient(
             0deg,
             rgba(139, 69, 19, 0.02) 0px,
@@ -1104,13 +1090,7 @@
     left: 0;
     right: 0;
     height: 20px;
-    background: repeating-linear-gradient(
-        90deg,
-        #D4AF37 0px,
-        #D4AF37 2px,
-        transparent 2px,
-        transparent 8px
-    );
+    background: #D4AF37;
 }
 
 .scroll-paper::before {
@@ -1118,7 +1098,16 @@
 }
 
 .scroll-paper::after {
-    bottom: 0;
+    display: none;
+}
+
+.scroll-content-animated::after {
+    content: '';
+    display: block;
+    height: 20px;
+    background: #D4AF37;
+    margin: 20px -10px 0 -10px;
+    flex-shrink: 0;
 }
 
 /* Content inside scroll */
@@ -1128,12 +1117,13 @@
     text-align: center;
     width: 100%;
     max-width: 100%;
-    padding: 0 10px;
+    padding: 0 10px 20px 10px;
     box-sizing: border-box;
     flex: 1;
     min-height: 0;
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 @keyframes contentFadeIn {
@@ -1173,7 +1163,7 @@
     padding: 20px 0;
     border-bottom: 3px solid rgba(139, 0, 0, 0.3);
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    font-family: 'Noto Serif Devanagari', serif;
+    font-family: 'Laila', 'Noto Serif Devanagari', serif;
     text-align: center;
     line-height: 1.2;
     display: block;
@@ -1189,7 +1179,7 @@
     font-weight: 700;
     margin-bottom: 25px;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    font-family: 'Noto Serif Devanagari', serif;
+    font-family: 'Laila', 'Noto Serif Devanagari', serif;
     display: block;
     width: 100%;
     max-width: 100%;
@@ -1213,7 +1203,7 @@
     font-weight: 600;
     margin-top: 30px;
     margin-bottom: 12px;
-    font-family: 'Noto Serif Devanagari', serif;
+    font-family: 'Laila', 'Noto Serif Devanagari', serif;
     display: block;
     width: 100%;
     max-width: 100%;
@@ -1227,7 +1217,7 @@
     font-style: italic;
     margin-bottom: 30px;
     line-height: 1.6;
-    font-family: 'Noto Serif Devanagari', serif;
+    font-family: 'Laila', 'Noto Serif Devanagari', serif;
     display: block;
     width: 100%;
     max-width: 100%;
@@ -1243,7 +1233,7 @@
     font-weight: 600;
     margin-top: 30px;
     margin-bottom: 12px;
-    font-family: 'Noto Serif Devanagari', serif;
+    font-family: 'Laila', 'Noto Serif Devanagari', serif;
     display: block;
     width: 100%;
     max-width: 100%;
@@ -1252,12 +1242,12 @@
 }
 
 .scroll-word-guidance {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     color: #666;
     line-height: 1.8;
     text-align: left;
     white-space: pre-line;
-    font-family: 'Noto Serif Devanagari', serif;
+    font-family: 'Laila', 'Noto Serif Devanagari', serif;
     display: block;
     width: 100%;
     max-width: 100%;
@@ -1417,6 +1407,10 @@
     .scroll-symbol {
         font-size: 6rem;
     }
+
+    .scroll-paper::after {
+        width: 100vw;
+    }
     
     .scroll-word-title {
         font-size: 4rem;
@@ -1440,7 +1434,7 @@
     }
     
     .scroll-word-guidance {
-        font-size: 1.2rem;
+        font-size: 1.4rem;
     }
 }
 
@@ -1492,7 +1486,11 @@
     }
     
     .scroll-word-guidance {
-        font-size: 1rem;
+        font-size: 1.2rem;
+    }
+
+    .scroll-paper::after {
+        width: 100vw;
     }
 }
 

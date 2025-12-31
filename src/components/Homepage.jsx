@@ -6,6 +6,7 @@ const Homepage = ({ onComplete }) => {
   const [showLine1, setShowLine1] = useState(false)
   const [showLine2, setShowLine2] = useState(false)
   const [showLine3, setShowLine3] = useState(false)
+  const [showMeaning, setShowMeaning] = useState(false)
   const audioRef = useRef(null)
   const particlesContainerRef = useRef(null)
   const omSymbolsContainerRef = useRef(null)
@@ -26,6 +27,8 @@ const Homepage = ({ onComplete }) => {
     setTimeout(() => setShowLine1(true), 500)
     setTimeout(() => setShowLine2(true), 2000)
     setTimeout(() => setShowLine3(true), 3500)
+    // Show meaning after mantra is fully displayed (5000ms = 3500ms + 1500ms delay)
+    setTimeout(() => setShowMeaning(true), 5000)
 
     // Play audio
     if (audioRef.current) {
@@ -98,6 +101,13 @@ const Homepage = ({ onComplete }) => {
     onComplete()
   }
 
+  const handleVishwamitraClick = (e) => {
+    e.stopPropagation()
+    if (onComplete) {
+      onComplete('vishwamitra')
+    }
+  }
+
   return (
     <div className="homepage">
       <div className="mandala mandala-1"></div>
@@ -108,7 +118,6 @@ const Homepage = ({ onComplete }) => {
       
       <div className="om-symbol">ॐ</div>
       
-      <div className="mantra-title">GAYATRI MANTRA</div>
       
       <div className="mantra-text">
         <div className={`mantra-line ${showLine1 ? 'visible' : ''}`}>
@@ -122,8 +131,25 @@ const Homepage = ({ onComplete }) => {
         </div>
       </div>
 
+      <div className={`mantra-meaning ${showMeaning ? 'visible' : ''}`}>
+        <p>हे परम प्रकाश! जो तीनों लोकों में व्याप्त है,</p>
+        <p> जो सर्वश्रेष्ठ है, जो देदीप्यमान है</p>
+        <p>उस दिव्य सूर्य का हम ध्यान करते हैं,</p>
+        <p> वह हमारी बुद्धि को सद्मार्ग पर प्रेरित करे।</p>
+        {/* <p>यह केवल 24 अक्षरों का मंत्र नहीं है। यह संपूर्ण वेद का सार है।</p>
+        <p>यह ब्रह्मांड की कुंजी है। यह मुक्ति का द्वार है।</p>
+        <p>जो इसे केवल बोलता है, उसे कुछ मिलता है।</p>
+        <p>जो इसे समझता है, उसे बहुत मिलता है।</p>
+        <p>जो इसे जीता है, वह स्वयं सब कुछ बन जाता है।</p>
+        <p>ॐ शांति शांति शांतिः</p> */}
+      </div>
+
       <button className="marg-darshan-button" onClick={handleButtonClick}>
         मार्गदर्शन
+      </button>
+
+      <button className="vishwamitra-button" onClick={handleVishwamitraClick}>
+        विश्वामित्र का संदेश
       </button>
 
       <audio

@@ -54,15 +54,7 @@
     transform: translateX(-50%);
     width: 300px;
     height: 440px;
-    background: 
-        repeating-linear-gradient(
-            0deg,
-            rgba(139, 69, 19, 0.02) 0px,
-            rgba(139, 69, 19, 0.02) 1px,
-            transparent 1px,
-            transparent 3px
-        ),
-        linear-gradient(135deg, #FFF9E6 0%, #F5DEB3 50%, #FFF9E6 100%);
+    background: linear-gradient(135deg, #FFF9E6 0%, #F5DEB3 50%, #FFF9E6 100%);
     border-left: 4px solid #D4AF37;
     border-right: 4px solid #D4AF37;
     box-shadow: 

@@ -5,7 +5,7 @@
 }
 
 body {
-    font-family: 'Noto Serif Devanagari', 'Crimson Text', serif;
+    font-family: 'Laila', 'Noto Serif Devanagari', 'Crimson Text', serif;
     overflow: hidden;
     width: 100vw;
     height: 100vh;
@@ -15,5 +15,8 @@ body {
     width: 100%;
     height: 100%;
 }
+
+
+
 
 

@@ -1,13 +1,14 @@
 .homepage {
     width: 100%;
-    height: 100%;
+    min-height: 100vh;
     background: linear-gradient(135deg, #8B0000 0%, #B22222 25%, #CD5C5C 50%, #FF6347 75%, #FF8C00 100%);
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     position: relative;
-    overflow: hidden;
+    overflow-y: auto;
+    padding: 20px 20px 5px 20px;
 }
 
 .homepage::before {
@@ -27,13 +28,23 @@
 }
 
 .om-symbol {
-    font-size: 6rem;
+    font-size: 4rem;
     color: rgba(255, 255, 255, 0.9);
-    text-shadow: 0 0 30px rgba(255, 140, 0, 0.8);
+    text-shadow: 
+        2px 2px 0px rgba(0, 0, 0, 0.6),
+        1px 1px 0px rgba(0, 0, 0, 0.8),
+        0 0 30px rgba(255, 140, 0, 0.8),
+        0 0 60px rgba(255, 140, 0, 0.4);
     animation: omGlow 3s ease-in-out infinite;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
+    margin-top: 10px;
     position: relative;
     z-index: 2;
+    font-family: 'Laila', 'Tiro Devanagari Sanskrit', 'Noto Serif Devanagari', serif;
+    font-weight: 700;
+    letter-spacing: 2px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 @keyframes omGlow {
@@ -70,16 +81,26 @@
 }
 
 .mantra-text {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     color: white;
     text-align: center;
-    line-height: 2.2;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    line-height: 1.8;
+    text-shadow: 
+        2px 2px 0px rgba(0, 0, 0, 0.8),
+        1px 1px 0px rgba(0, 0, 0, 0.9),
+        0px 0px 20px rgba(255, 140, 0, 0.4),
+        0px 0px 40px rgba(255, 140, 0, 0.2),
+        0 2px 10px rgba(0, 0, 0, 0.5);
     max-width: 900px;
     padding: 0 20px;
+    margin-bottom: 0;
     position: relative;
     z-index: 2;
-    font-weight: 600;
+    font-weight: 400;
+    font-family: 'Laila', 'Tiro Devanagari Sanskrit', 'Noto Serif Devanagari', serif;
+    letter-spacing: 1px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .mantra-line {
@@ -91,6 +112,43 @@
 .mantra-line.visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+.mantra-meaning {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.95);
+    text-align: center;
+    line-height: 1.6;
+    text-shadow:
+        1px 1px 0px rgba(0, 0, 0, 0.7),
+        0px 0px 15px rgba(255, 140, 0, 0.3),
+        0 2px 8px rgba(0, 0, 0, 0.4);
+    max-width: 900px;
+    padding: 20px 20px 0 20px;
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 2;
+    font-weight: 400;
+    font-family: 'Laila', 'Tiro Devanagari Sanskrit', 'Noto Serif Devanagari', serif;
+    letter-spacing: 0.5px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1.5s ease-out;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.mantra-meaning.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.mantra-meaning p {
+    margin-bottom: 12px;
+}
+
+.mantra-meaning p:last-child {
+    margin-bottom: 0;
 }
 
 .light-particles {
@@ -215,37 +273,41 @@
 }
 
 .marg-darshan-button {
-    position: fixed;
-    bottom: 40px;
-    left: 50%;
-    transform: translateX(-50%);
+    position: relative;
+    margin: 20px auto 12px auto;
     background: linear-gradient(135deg, #FF8C00 0%, #FF6347 100%);
     color: white;
-    border: 3px solid #D4AF37;
-    padding: 18px 50px;
-    font-size: 1.5rem;
-    border-radius: 50px;
+    border: 2px solid #D4AF37;
+    padding: 10px 30px;
+    font-size: 0.9rem;
+    border-radius: 25px;
     cursor: pointer;
-    box-shadow: 0 6px 25px rgba(255, 140, 0, 0.5);
+    box-shadow: 0 4px 15px rgba(255, 140, 0, 0.4);
     transition: all 0.3s ease;
     z-index: 1000;
-    font-weight: 700;
-    font-family: 'Noto Serif Devanagari', serif;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    animation: buttonPulse 2s ease-in-out infinite;
+    font-weight: 600;
+    font-family: 'Laila', 'Tiro Devanagari Sanskrit', 'Noto Serif Devanagari', serif;
+    text-shadow: 
+        1px 1px 0px rgba(0, 0, 0, 0.5),
+        0 2px 4px rgba(0, 0, 0, 0.3);
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
-    min-height: 44px;
+    min-height: 36px;
+    letter-spacing: 0.5px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: block;
+    width: fit-content;
 }
 
 .marg-darshan-button:hover {
-    transform: translateX(-50%) translateY(-5px) scale(1.05);
-    box-shadow: 0 8px 30px rgba(255, 140, 0, 0.7);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 6px 20px rgba(255, 140, 0, 0.6);
     background: linear-gradient(135deg, #FF6347 0%, #FF8C00 100%);
 }
 
 .marg-darshan-button:active {
-    transform: translateX(-50%) translateY(-2px) scale(1.02);
+    transform: translateY(0) scale(1);
 }
 
 @keyframes buttonPulse {
@@ -257,50 +319,138 @@
     }
 }
 
-/* Mobile Responsive Styles */
-@media screen and (max-width: 768px) {
+.vishwamitra-button {
+    position: relative;
+    margin: 0 auto 0 auto;
+    background: linear-gradient(135deg, #FF8C00 0%, #FF6347 100%);
+    color: white;
+    border: 2px solid #D4AF37;
+    padding: 10px 30px;
+    font-size: 0.9rem;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(255, 140, 0, 0.4);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    font-weight: 600;
+    font-family: 'Laila', 'Tiro Devanagari Sanskrit', 'Noto Serif Devanagari', serif;
+    text-shadow: 
+        1px 1px 0px rgba(0, 0, 0, 0.5),
+        0 2px 4px rgba(0, 0, 0, 0.3);
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    min-height: 36px;
+    letter-spacing: 0.5px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: block;
+    width: fit-content;
+}
+
+.vishwamitra-button:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 6px 20px rgba(255, 140, 0, 0.6);
+    background: linear-gradient(135deg, #FF6347 0%, #FF8C00 100%);
+}
+
+.vishwamitra-button:active {
+    transform: translateY(0) scale(1);
+}
+
+/* Medium screen responsive styles */
+@media screen and (max-width: 1024px) and (min-width: 769px) {
     .homepage {
-        padding: 20px 15px;
-        min-height: 100vh;
-        justify-content: flex-start;
-        padding-top: 40px;
+        padding: 20px 20px 5px 20px;
     }
 
     .om-symbol {
         font-size: 3.5rem;
-        margin-bottom: 20px;
+        margin-bottom: 18px;
+        margin-top: 8px;
     }
 
     .mantra-title {
-        font-size: 1.5rem;
+        font-size: 2.2rem;
+        margin-bottom: 40px;
+    }
+
+    .mantra-text {
+        font-size: 1.9rem;
+        line-height: 1.7;
+        margin-bottom: 0;
+    }
+
+    .mantra-meaning {
+        font-size: 1.15rem;
+        padding: 18px 20px 0 20px;
+        line-height: 1.6;
+        margin-bottom: 35px;
+    }
+
+    .marg-darshan-button,
+    .vishwamitra-button {
+        font-size: 0.88rem;
+        padding: 9px 28px;
+        min-height: 34px;
+    }
+}
+
+/* Mobile Responsive Styles */
+@media screen and (max-width: 768px) {
+    .homepage {
+        padding: 15px 15px 5px 15px;
+        min-height: 100vh;
+        justify-content: flex-start;
+    }
+
+    .om-symbol {
+        font-size: 4.5rem;
+        margin-bottom: 20px;
+        margin-top: 5px;
+    }
+
+    .mantra-title {
+        font-size: 1.8rem;
         margin-bottom: 30px;
         letter-spacing: 2px;
         padding: 0 10px;
     }
 
     .mantra-text {
-        font-size: 1.2rem;
-        line-height: 1.8;
+        font-size: 2.2rem;
+        line-height: 1.7;
         max-width: 100%;
         padding: 0 15px;
-        margin-bottom: 20px;
+        margin-bottom: 0;
     }
 
     .mantra-line {
         margin-bottom: 15px;
     }
 
-    .marg-darshan-button {
-        padding: 14px 35px;
-        font-size: 1.1rem;
-        bottom: 25px;
-        width: calc(100% - 40px);
-        max-width: 300px;
-        min-height: 48px;
+    .mantra-meaning {
+        font-size: 1.4rem;
+        padding: 20px 15px 0 15px;
+        line-height: 1.6;
+        margin-bottom: 30px;
     }
 
-    .marg-darshan-button:hover {
-        transform: translateX(-50%) scale(1.02);
+    .mantra-meaning p {
+        margin-bottom: 10px;
+    }
+
+    .marg-darshan-button {
+        font-size: 1rem;
+        padding: 10px 30px;
+        min-height: 38px;
+        margin: 20px auto 12px auto;
+    }
+
+    .vishwamitra-button {
+        font-size: 1rem;
+        padding: 10px 30px;
+        min-height: 38px;
+        margin: 0 auto 0 auto;
     }
 
     .mandala {
@@ -321,37 +471,62 @@
 
 @media screen and (max-width: 480px) {
     .homepage {
-        padding: 15px 10px;
-        padding-top: 30px;
+        padding: 12px 10px 5px 10px;
+        min-height: 100vh;
+        justify-content: flex-start;
+        overflow-y: auto;
     }
 
     .om-symbol {
-        font-size: 2.8rem;
-        margin-bottom: 15px;
+        font-size: 3.5rem;
+        margin-bottom: 18px;
+        margin-top: 5px;
     }
 
     .mantra-title {
         font-size: 1.2rem;
         margin-bottom: 25px;
-        letter-spacing: 1.5px;
+        letter-spacing: 1px;
     }
 
     .mantra-text {
-        font-size: 1rem;
+        font-size: 1.8rem;
         line-height: 1.6;
-        padding: 0 10px;
+        padding: 0 8px;
+        margin-bottom: 0;
     }
 
     .mantra-line {
         margin-bottom: 12px;
     }
 
+    .mantra-meaning {
+        font-size: 1.25rem;
+        padding: 18px 8px 0 8px;
+        line-height: 1.5;
+        margin-bottom: 25px;
+    }
+
+    .mantra-meaning p {
+        margin-bottom: 8px;
+    }
+
+    .mantra-meaning p:last-child {
+        margin-bottom: 0;
+    }
+
     .marg-darshan-button {
-        padding: 12px 30px;
-        font-size: 1rem;
-        bottom: 20px;
-        width: calc(100% - 30px);
-        min-height: 44px;
+        font-size: 0.95rem;
+        padding: 9px 25px;
+        min-height: 36px;
+        margin: 18px auto 10px auto;
+    }
+
+    .vishwamitra-button {
+        font-size: 0.95rem;
+        padding: 9px 25px;
+        min-height: 36px;
+        margin: 0 auto 0 auto;
     }
 
     .mandala {
@@ -363,30 +538,112 @@
 /* Landscape mobile orientation */
 @media screen and (max-width: 768px) and (orientation: landscape) {
     .homepage {
-        padding-top: 20px;
+        padding: 10px 15px 5px 15px;
+        min-height: 100vh;
+        overflow-y: auto;
     }
 
     .om-symbol {
-        font-size: 2.5rem;
-        margin-bottom: 10px;
+        font-size: 3rem;
+        margin-bottom: 12px;
+        margin-top: 5px;
     }
 
     .mantra-title {
-        font-size: 1.2rem;
-        margin-bottom: 15px;
+        font-size: 1.1rem;
+        margin-bottom: 12px;
+        letter-spacing: 1px;
     }
 
     .mantra-text {
-        font-size: 1rem;
+        font-size: 1.6rem;
         line-height: 1.5;
-        margin-bottom: 10px;
+        margin-bottom: 0;
+        padding: 0 8px;
+    }
+
+    .mantra-meaning {
+        font-size: 1.15rem;
+        padding: 15px 8px 0 8px;
+        line-height: 1.5;
+        margin-bottom: 20px;
+    }
+
+    .mantra-meaning p {
+        margin-bottom: 8px;
+    }
+
+    .mantra-meaning p:last-child {
+        margin-bottom: 0;
     }
 
     .marg-darshan-button {
-        bottom: 15px;
-        padding: 10px 25px;
-        font-size: 0.95rem;
-        min-height: 44px;
+        font-size: 0.9rem;
+        padding: 8px 22px;
+        min-height: 32px;
+        margin: 15px auto 8px auto;
+    }
+
+    .vishwamitra-button {
+        font-size: 0.9rem;
+        padding: 8px 22px;
+        min-height: 32px;
+        margin: 0 auto 0 auto;
+    }
+}
+
+/* Extra small screens */
+@media screen and (max-width: 360px) {
+    .homepage {
+        padding: 10px 8px 5px 8px;
+    }
+
+    .om-symbol {
+        font-size: 3rem;
+        margin-bottom: 15px;
+        margin-top: 5px;
+    }
+
+    .mantra-title {
+        font-size: 1rem;
+        margin-bottom: 15px;
+        letter-spacing: 0.5px;
+    }
+
+    .mantra-text {
+        font-size: 1.6rem;
+        line-height: 1.5;
+        padding: 0 5px;
+        margin-bottom: 0;
+    }
+
+    .mantra-meaning {
+        font-size: 1.1rem;
+        padding: 15px 5px 0 5px;
+        line-height: 1.5;
+        margin-bottom: 20px;
+    }
+
+    .mantra-meaning p {
+        margin-bottom: 8px;
+    }
+
+    .mantra-meaning p:last-child {
+        margin-bottom: 0;
+    }
+
+    .marg-darshan-button {
+        font-size: 0.85rem;
+        padding: 8px 20px;
+        min-height: 32px;
+        margin: 15px auto 10px auto;
+    }
+
+    .vishwamitra-button {
+        font-size: 0.85rem;
+        padding: 8px 20px;
+        min-height: 32px;
+        margin: 0 auto 0 auto;
     }
 }
 

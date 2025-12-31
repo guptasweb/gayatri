@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react'
 import Homepage from './components/Homepage'
+import WarningPage from './components/WarningPage'
 import SlipSelection from './components/SlipSelection'
 import SlipOpening from './components/SlipOpening'
 import MeaningPage from './components/MeaningPage'
+import VishwamitraMessage from './components/VishwamitraMessage'
 import AudioPlayer from './components/AudioPlayer'
 import './App.css'
 
@@ -10,7 +12,19 @@ function App() {
   const [currentScreen, setCurrentScreen] = useState('homepage')
   const [selectedWord, setSelectedWord] = useState(null)
 
-  const handleMantraComplete = () => {
+  const handleMantraComplete = (screen) => {
+    if (screen === 'vishwamitra') {
+      setCurrentScreen('vishwamitra')
+    } else {
+      setCurrentScreen('warning')
+    }
+  }
+
+  const handleBackToHomepage = () => {
+    setCurrentScreen('homepage')
+  }
+
+  const handleWarningProceed = () => {
     setCurrentScreen('slip-selection')
   }
 
@@ -34,6 +48,9 @@ function App() {
       {currentScreen === 'homepage' && (
         <Homepage onComplete={handleMantraComplete} />
       )}
+      {currentScreen === 'warning' && (
+        <WarningPage onProceed={handleWarningProceed} onBack={handleBackToHomepage} />
+      )}
       {currentScreen === 'slip-selection' && (
         <SlipSelection onSlipSelected={handleSlipSelected} />
       )}
@@ -48,6 +65,9 @@ function App() {
           word={selectedWord} 
           onBack={handleBackToSlips} 
         />
+      )}
+      {currentScreen === 'vishwamitra' && (
+        <VishwamitraMessage onBack={handleBackToHomepage} />
       )}
     </div>
   )
