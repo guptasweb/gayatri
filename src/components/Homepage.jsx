@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from 'react'
-import omAudio from '../assets/om.mp3'
 import './Homepage.css'
 
 const Homepage = ({ onComplete }) => {
@@ -7,7 +6,6 @@ const Homepage = ({ onComplete }) => {
   const [showLine2, setShowLine2] = useState(false)
   const [showLine3, setShowLine3] = useState(false)
   const [showMeaning, setShowMeaning] = useState(false)
-  const audioRef = useRef(null)
   const particlesContainerRef = useRef(null)
   const omSymbolsContainerRef = useRef(null)
 
@@ -29,19 +27,6 @@ const Homepage = ({ onComplete }) => {
     setTimeout(() => setShowLine3(true), 3500)
     // Show meaning after mantra is fully displayed (5000ms = 3500ms + 1500ms delay)
     setTimeout(() => setShowMeaning(true), 5000)
-
-    // Play audio
-    if (audioRef.current) {
-      audioRef.current.play().catch(err => {
-        console.log('Audio autoplay prevented:', err)
-      })
-    }
-
-    return () => {
-      if (audioRef.current) {
-        audioRef.current.pause()
-      }
-    }
   }, [])
 
   useEffect(() => {
@@ -151,14 +136,6 @@ const Homepage = ({ onComplete }) => {
       <button className="vishwamitra-button" onClick={handleVishwamitraClick}>
         विश्वामित्र का संदेश
       </button>
-
-      <audio
-        ref={audioRef}
-        loop
-        src={omAudio}
-      >
-        Your browser does not support the audio element.
-      </audio>
     </div>
   )
 }
