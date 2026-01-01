@@ -1,4 +1,4 @@
-# MantraSlip - Your Guiding Mantra for 2025
+# MantraSlip - Your guiding mantra for 2026
 
 A ritual-based React application for choosing your guiding mantra for the year, inspired by the Gayatri Mantra.
 
