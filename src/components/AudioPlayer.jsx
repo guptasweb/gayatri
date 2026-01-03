@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
-import omAudio from '../assets/om.mp3'
+import gayatriAudio from '../assets/gayatri-mantra-raga-1.mp3'
 import './AudioPlayer.css'
 
 const AudioPlayer = () => {
@@ -10,68 +10,71 @@ const AudioPlayer = () => {
   useEffect(() => {
     const startAudio = async () => {
       if (audioRef.current) {
-        audioRef.current.volume = 0.3
-        audioRef.current.loop = true
-        audioRef.current.muted = true // Start muted for autoplay
-        setIsMuted(true)
-        
-        try {
-          // Try to play muted (browsers allow muted autoplay)
-          await audioRef.current.play()
-          
-          // Try to unmute after a short delay
-          setTimeout(() => {
-            if (audioRef.current && audioRef.current.muted) {
-              try {
-                audioRef.current.muted = false
-                setIsMuted(false)
-              } catch (err) {
-                // If unmuting fails, set up user interaction handler
-                const handleUserInteraction = (e) => {
-                  // Ignore clicks on the volume button itself
-                  if (buttonRef.current && (buttonRef.current === e.target || buttonRef.current.contains(e.target))) {
-                    return
-                  }
-                  
-                  if (audioRef.current) {
+        // Only initialize if not already playing (prevents restart on navigation)
+        if (audioRef.current.paused || audioRef.current.currentTime === 0) {
+          audioRef.current.volume = 0.3
+          audioRef.current.loop = true
+          audioRef.current.muted = true // Start muted for autoplay
+          setIsMuted(true)
+
+            try {
+              // Try to play muted (browsers allow muted autoplay)
+              await audioRef.current.play()
+
+              // Try to unmute after a short delay
+              setTimeout(() => {
+                if (audioRef.current && audioRef.current.muted) {
+                  try {
                     audioRef.current.muted = false
                     setIsMuted(false)
+                  } catch (err) {
+                    // If unmuting fails, set up user interaction handler
+                    const handleUserInteraction = (e) => {
+                      // Ignore clicks on the volume button itself
+                      if (buttonRef.current && (buttonRef.current === e.target || buttonRef.current.contains(e.target))) {
+                        return
+                      }
+
+                      if (audioRef.current) {
+                        audioRef.current.muted = false
+                        setIsMuted(false)
+                      }
+                      document.removeEventListener('click', handleUserInteraction)
+                      document.removeEventListener('touchstart', handleUserInteraction)
+                    }
+
+                    document.addEventListener('click', handleUserInteraction, { once: true })
+                    document.addEventListener('touchstart', handleUserInteraction, { once: true })
                   }
-                  document.removeEventListener('click', handleUserInteraction)
-                  document.removeEventListener('touchstart', handleUserInteraction)
                 }
-                
-                document.addEventListener('click', handleUserInteraction, { once: true })
-                document.addEventListener('touchstart', handleUserInteraction, { once: true })
+              }, 500)
+            } catch (error) {
+              console.log('Audio autoplay failed, will start on user interaction:', error)
+              // If autoplay fails completely, wait for user interaction
+              const handleUserInteraction = async (e) => {
+                // Ignore clicks on the volume button itself
+                if (buttonRef.current && (buttonRef.current === e.target || buttonRef.current.contains(e.target))) {
+                  return
+                }
+
+                try {
+                  if (audioRef.current) {
+                    audioRef.current.muted = false
+                    await audioRef.current.play()
+                    setIsMuted(false)
+                  }
+                } catch (err) {
+                  console.log('Audio play failed:', err)
+                }
+                document.removeEventListener('click', handleUserInteraction)
+                document.removeEventListener('touchstart', handleUserInteraction)
               }
+
+              document.addEventListener('click', handleUserInteraction, { once: true })
+              document.addEventListener('touchstart', handleUserInteraction, { once: true })
             }
-          }, 500)
-        } catch (error) {
-          console.log('Audio autoplay failed, will start on user interaction:', error)
-          // If autoplay fails completely, wait for user interaction
-          const handleUserInteraction = async (e) => {
-            // Ignore clicks on the volume button itself
-            if (buttonRef.current && (buttonRef.current === e.target || buttonRef.current.contains(e.target))) {
-              return
-            }
-            
-            try {
-              if (audioRef.current) {
-                audioRef.current.muted = false
-                await audioRef.current.play()
-                setIsMuted(false)
-              }
-            } catch (err) {
-              console.log('Audio play failed:', err)
-            }
-            document.removeEventListener('click', handleUserInteraction)
-            document.removeEventListener('touchstart', handleUserInteraction)
           }
-          
-          document.addEventListener('click', handleUserInteraction, { once: true })
-          document.addEventListener('touchstart', handleUserInteraction, { once: true })
         }
-      }
     }
 
     startAudio()
@@ -116,7 +119,7 @@ const AudioPlayer = () => {
 
   return (
     <div className="audio-player">
-      <audio ref={audioRef} src={omAudio} />
+      <audio ref={audioRef} src={gayatriAudio} />
       <button 
         ref={buttonRef}
         className="audio-toggle-button" 
